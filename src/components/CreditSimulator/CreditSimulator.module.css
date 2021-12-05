@@ -1,0 +1,60 @@
+.credit-simulation-card {
+  background: #074a7e;
+  padding: 4rem 4rem;
+  max-width: 700px;
+}
+.inner {
+  background: #003b67;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 3rem;
+}
+
+.inner h3 {
+  text-transform: uppercase;
+}
+.monthly-fee-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  background: #00355d;
+  padding: 0 1rem 0 1rem;
+}
+
+.fixed-monthly-fee {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.btns-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.btns-container > button {
+  border: none;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.obtain-credit-btn {
+  background: hsl(168, 76%, 38%);
+  flex-basis: 70%;
+  font-size: 1rem;
+  padding: 0.75rem 0 0.75rem;
+}
+.obtain-credit-btn:hover {
+  background: hsl(168, 76%, 25%);
+}
+.fee-details-btn {
+  background: hsl(206, 85%, 29%);
+  color: white tex;
+}
+.fee-details-btn:hover{
+  background: hsl(206, 85%, 25%);
+}
