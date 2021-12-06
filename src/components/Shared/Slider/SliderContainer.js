@@ -18,12 +18,16 @@ const SliderContainer = ({
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef(null);
 
-  const toggleEditing = () => {
+  const handleBlur = () => {
+    if (isEditing && (value > max || value < min)) {
+      const outOfBoundaryValue = value > max ? max : min;
+      onChange(outOfBoundaryValue);
+    }
     setIsEditing((ie) => !ie);
   };
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      toggleEditing();
+      handleBlur();
     }
   };
   useEffect(() => {
@@ -45,13 +49,13 @@ const SliderContainer = ({
               onChange={onChange}
               className={styles["value-input"]}
               ref={inputRef}
-              onBlur={toggleEditing}
+              onBlur={handleBlur}
               onKeyDown={handleKeyDown}
             />
           ) : (
             <div
               className={styles["value-input-formatted"]}
-              onClick={toggleEditing}
+              onClick={handleBlur}
             >
               {formatValue(value)}
             </div>

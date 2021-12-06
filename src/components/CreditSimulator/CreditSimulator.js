@@ -16,6 +16,7 @@ const creditSimulatorConfig = {
     title: "plazo",
   },
 };
+
 const CreditSimulator = () => {
   const [monthlyFee, setMonthlyFee] = useState(
     creditSimulatorConfig.totalAmount.min
@@ -26,13 +27,12 @@ const CreditSimulator = () => {
     () => monthlyFee / timespan,
     [monthlyFee, timespan]
   );
-  const handleMonthlyFeeChange = (valueOrEvent) => {
-    if (valueOrEvent?.target) setMonthlyFee(valueOrEvent.target.value);
-    else setMonthlyFee(valueOrEvent);
-  };
-  const handleTimespanChange = (valueOrEvent) => {
-    if (valueOrEvent?.target) setTimespan(valueOrEvent.target.value);
-    else setTimespan(valueOrEvent);
+
+  const handleSliderChange = (setter) => (valueOrEvent) => {
+    const value = valueOrEvent?.target
+      ? valueOrEvent.target.value
+      : valueOrEvent;
+    setter(value);
   };
 
   return (
@@ -42,12 +42,12 @@ const CreditSimulator = () => {
         <SliderContainer
           {...creditSimulatorConfig.totalAmount}
           value={monthlyFee}
-          onChange={handleMonthlyFeeChange}
+          onChange={handleSliderChange(setMonthlyFee)}
         />
         <SliderContainer
           {...creditSimulatorConfig.timespan}
           value={timespan}
-          onChange={handleTimespanChange}
+          onChange={handleSliderChange(setTimespan)}
         />
         <div className={styles["credit-controls-container"]}>
           <div className={styles["monthly-fee-container"]}>
